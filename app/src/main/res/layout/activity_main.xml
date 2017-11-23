@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backBlue"
+    android:orientation="vertical"
+    tools:context="ru.romavaleev.hy_kia_amp_manage.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="100">
+
+        <ru.romavaleev.hy_kia_amp_manage.TextViewPlus
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:text="Hyundai-kia amplifier manager\nby baralgin1003"
+            android:textAlignment="center"
+            android:textColor="@color/text"
+            android:textSize="25sp"
+            app:customFont="fonts/egb.ttf" />
+
+        <ImageView
+            android:id="@+id/btnSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="98"
+            app:srcCompat="@drawable/settings" />
+    </LinearLayout>
+
+    <ru.romavaleev.hy_kia_amp_manage.TextViewPlus
+        android:id="@+id/textViewPlus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:text="---------------------------------------------------------------------------"
+        android:textAlignment="center"
+        android:textColor="#aac4e0"
+        android:textSize="25sp"
+        app:customFont="fonts/egb.ttf" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="50"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ru.romavaleev.hy_kia_amp_manage.TextViewPlus
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bass"
+                    android:textColor="#aac4e0"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:customFont="fonts/egb.ttf" />
+
+                <ru.romavaleev.hy_kia_amp_manage.TextViewPlus
+                    android:id="@+id/bassTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="0"
+                    android:textColor="#aac4e0"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:customFont="fonts/egb.ttf" />
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/bassBar"
+                style="@android:style/Widget.Material.SeekBar.Discrete"
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="50dp"
+                android:layout_weight="1"
+                android:indeterminateTint="@color/text"
+                android:max="20"
+                android:min="20"
+                android:minWidth="250dp"
+                android:progress="10"
+                android:progressBackgroundTint="@color/text"
+                android:progressTint="#808080"
+                android:thumbTint="@color/text"
+                android:tickMarkTint="@color/text" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ru.romavaleev.hy_kia_amp_manage.TextViewPlus
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Middle"
+                    android:textColor="#aac4e0"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:customFont="fonts/egb.ttf" />
+
+                <ru.romavaleev.hy_kia_amp_manage.TextViewPlus
+                    android:id="@+id/midTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:textColor="#aac4e0"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:customFont="fonts/egb.ttf" />
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/middleBar"
+                style="@android:style/Widget.Material.SeekBar.Discrete"
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="50dp"
+                android:layout_weight="1"
+                android:max="20"
+                android:min="20"
+                android:minWidth="250dp"
+                android:progress="10"
+                android:progressBackgroundTint="@color/text"
+                android:progressTint="#808080"
+                android:thumbTint="#aac4e0"
+                android:tickMarkTint="#aac4e0" />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ru.romavaleev.hy_kia_amp_manage.TextViewPlus
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Treble"
+                    android:textColor="#aac4e0"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:customFont="fonts/egb.ttf" />
+
+                <ru.romavaleev.hy_kia_amp_manage.TextViewPlus
+                    android:id="@+id/trebTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="0"
+                    android:textColor="#aac4e0"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:customFont="fonts/egb.ttf" />
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/trebleBar"
+                style="@android:style/Widget.Material.SeekBar.Discrete"
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="50dp"
+                android:layout_weight="1"
+                android:max="20"
+                android:min="20"
+                android:minWidth="250dp"
+                android:progress="7"
+                android:progressBackgroundTint="@color/text"
+                android:progressTint="#808080"
+                android:thumbTint="#aac4e0"
+                android:tickMarkTint="#aac4e0" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="50"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ru.romavaleev.hy_kia_amp_manage.TextViewPlus
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Balance"
+                    android:textColor="#aac4e0"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:customFont="fonts/egb.ttf" />
+
+                <ru.romavaleev.hy_kia_amp_manage.TextViewPlus
+                    android:id="@+id/balanceTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="0"
+                    android:textColor="#aac4e0"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:customFont="fonts/egb.ttf" />
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/balanceBar"
+                style="@android:style/Widget.Material.SeekBar.Discrete"
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="50dp"
+                android:layout_weight="1"
+                android:max="20"
+                android:min="20"
+                android:minWidth="250dp"
+                android:progress="10"
+                android:progressBackgroundTint="@color/text"
+                android:progressTint="#808080"
+                android:thumbTint="#aac4e0"
+                android:tickMarkTint="#aac4e0" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ru.romavaleev.hy_kia_amp_manage.TextViewPlus
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fader"
+                    android:textColor="#aac4e0"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:customFont="fonts/egb.ttf" />
+
+                <ru.romavaleev.hy_kia_amp_manage.TextViewPlus
+                    android:id="@+id/faderTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="0"
+                    android:textColor="#aac4e0"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:customFont="fonts/egb.ttf" />
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/faderBar"
+                style="@android:style/Widget.Material.SeekBar.Discrete"
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="50dp"
+                android:layout_weight="1"
+                android:max="20"
+                android:min="20"
+                android:minWidth="250dp"
+                android:progress="10"
+                android:progressBackgroundTint="@color/text"
+                android:progressTint="#808080"
+                android:thumbTint="#aac4e0"
+                android:tickMarkTint="#aac4e0" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ru.romavaleev.hy_kia_amp_manage.TextViewPlus
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VOL"
+                    android:textColor="#aac4e0"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:customFont="fonts/egb.ttf" />
+
+                <ru.romavaleev.hy_kia_amp_manage.TextViewPlus
+                    android:id="@+id/volTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="0"
+                    android:textColor="#aac4e0"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:customFont="fonts/egb.ttf" />
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/volBar"
+                style="@android:style/Widget.Material.SeekBar.Discrete"
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="50dp"
+                android:layout_weight="1"
+                android:max="35"
+                android:min="35"
+                android:minWidth="250dp"
+                android:progress="7"
+                android:progressBackgroundTint="@color/text"
+                android:progressTint="#808080"
+                android:thumbTint="#aac4e0"
+                android:tickMarkTint="#aac4e0" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
