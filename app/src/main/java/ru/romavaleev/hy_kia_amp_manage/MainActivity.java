@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences sp;
     private Handler sendHandler;
     public static Handler recHandler;
-    private TextView recText;
+    private EditText recText;
     ImageView btnSettings;
 
     private Typeface typeFace;
@@ -94,28 +95,31 @@ public class MainActivity extends AppCompatActivity {
         faderTV = (TextView) findViewById(R.id.faderTV);
         volTV = (TextView) findViewById(R.id.volTV);
 
-        bassM = (ImageView)findViewById(R.id.bassMinus);
-        trebM = (ImageView)findViewById(R.id.trebMinus);
-        midM = (ImageView)findViewById(R.id.midMinus);
-        balanceM = (ImageView)findViewById(R.id.balanceMinus);
-        faderM = (ImageView)findViewById(R.id.fadeMinus);
-        volM = (ImageView)findViewById(R.id.volMinus);
-        bassP = (ImageView)findViewById(R.id.bassPlus);
-        trebP = (ImageView)findViewById(R.id.trebPlus);
-        midP = (ImageView)findViewById(R.id.midPlus);
-        balanceP = (ImageView)findViewById(R.id.balancePlus);
-        faderP = (ImageView)findViewById(R.id.fadePlus);
-        volP = (ImageView)findViewById(R.id.volPlus);
+        recText = (EditText) findViewById(R.id.recText);
+        if (!PreferenceManager.getDefaultSharedPreferences(this).getBoolean("isDebug", false)) {
+            recText.setVisibility(View.GONE);
+        }
 
-        btnSettings =(ImageView)findViewById(R.id.btnSettings);
+        bassM = (ImageView) findViewById(R.id.bassMinus);
+        trebM = (ImageView) findViewById(R.id.trebMinus);
+        midM = (ImageView) findViewById(R.id.midMinus);
+        balanceM = (ImageView) findViewById(R.id.balanceMinus);
+        faderM = (ImageView) findViewById(R.id.fadeMinus);
+        volM = (ImageView) findViewById(R.id.volMinus);
+        bassP = (ImageView) findViewById(R.id.bassPlus);
+        trebP = (ImageView) findViewById(R.id.trebPlus);
+        midP = (ImageView) findViewById(R.id.midPlus);
+        balanceP = (ImageView) findViewById(R.id.balancePlus);
+        faderP = (ImageView) findViewById(R.id.fadePlus);
+        volP = (ImageView) findViewById(R.id.volPlus);
 
-
+        btnSettings = (ImageView) findViewById(R.id.btnSettings);
 
 
         ImageView.OnClickListener listenerV = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              clickProc(view);
+                clickProc(view);
             }
         };
 
@@ -139,14 +143,13 @@ public class MainActivity extends AppCompatActivity {
         //recText = (TextView) findViewById(R.id.textView);
 
 
-
         sendHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
-                if (usbService != null && !sp.getBoolean("oCanbus",false))
+                if (usbService != null && !sp.getBoolean("oCanbus", false))
                     usbService.write((byte[]) msg.obj);
 
-                if(sp.getBoolean("oCanbus",false)){
+                if (sp.getBoolean("oCanbus", false)) {
                 /*    mAm = (AudioManager) getSystemService(AUDIO_SERVICE);
                     String str = SystemProperties.get("hal9k.setParameters");
                     mParameter = str;
@@ -159,93 +162,114 @@ public class MainActivity extends AppCompatActivity {
         recHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
-                switch (msg.what) {
-                    case UsbService.MESSAGE_FROM_SERIAL_PORT:
-                        String data = (String) msg.obj;
-                        recText.append(data);
-                        break;
+                if (sp.getBoolean("isDebug", false)) {
+                    switch (msg.what) {
+                        case UsbService.MESSAGE_FROM_SERIAL_PORT:
+                            String data = (String) msg.obj;
+                            recText.setText(data + " ");
+                            break;
+                    }
+                } else {
+                    recText.setText("");
                 }
             }
         };
     }
 
-    private void clickProc(View view){
-        if (view.equals(bassM) && bassVol> -10) {
+    private void clickProc(View view) {
+        boolean write = false;
+
+        if (view.equals(bassM) && bassVol > 0) {
             bassVol--;
             labelTextFormatter(bassTV, bassVol);
             sp.edit().putInt("bas", bassVol).apply();
+            write = true;
         }
 
-        if (view.equals(midM) && midVol> -10) {
+        if (view.equals(midM) && midVol > 0) {
             midVol--;
             labelTextFormatter(midTv, midVol);
             sp.edit().putInt("mid", midVol).apply();
+            write = true;
         }
 
-        if (view.equals(trebM) && trebVol> -10) {
+        if (view.equals(trebM) && trebVol > 0) {
             trebVol--;
             labelTextFormatter(trebTV, trebVol);
             sp.edit().putInt("tre", trebVol).apply();
+            write = true;
         }
 
-        if (view.equals(balanceM) && balanceVol> -10) {
+        if (view.equals(balanceM) && balanceVol > 0) {
             balanceVol--;
             labelTextFormatter(balanceTV, balanceVol);
             sp.edit().putInt("bal", balanceVol).apply();
+            write = true;
         }
 
-        if (view.equals(faderM) && faderVol> -10) {
+        if (view.equals(faderM) && faderVol > 0) {
             faderVol--;
             labelTextFormatter(faderTV, faderVol);
             sp.edit().putInt("fad", faderVol).apply();
+            write = true;
+        }
+        if (volVol < 4 && volVol > 0) {
+            volVol = 4;
+            write = true;
         }
 
-        if (view.equals(volM) && volVol> 0) {
-            volVol--;
+        if (view.equals(volM) && volVol >= 4) {
+            volVol = volVol - 4;
             labelTextFormatter(volTV, volVol);
             sp.edit().putInt("vol", volVol).apply();
+            write = true;
         }
 
 
-
-        if (view.equals(bassP) && bassVol<10) {
+        if (view.equals(bassP) && bassVol < 20) {
             bassVol++;
             labelTextFormatter(bassTV, bassVol);
             sp.edit().putInt("bas", bassVol).apply();
+            write = true;
         }
 
-        if (view.equals(midP) && midVol<10) {
+        if (view.equals(midP) && midVol < 20) {
             midVol++;
             labelTextFormatter(midTv, midVol);
             sp.edit().putInt("mid", midVol).apply();
+            write = true;
         }
 
-        if (view.equals(trebP) && trebVol<10) {
+        if (view.equals(trebP) && trebVol < 20) {
             trebVol++;
             labelTextFormatter(trebTV, trebVol);
             sp.edit().putInt("tre", trebVol).apply();
+            write = true;
         }
 
-        if (view.equals(balanceP) && balanceVol<10) {
+        if (view.equals(balanceP) && balanceVol < 20) {
             balanceVol++;
             labelTextFormatter(balanceTV, balanceVol);
             sp.edit().putInt("bal", balanceVol).apply();
+            write = true;
         }
 
-        if (view.equals(faderP) && faderVol<10) {
+        if (view.equals(faderP) && faderVol < 20) {
             faderVol++;
             labelTextFormatter(faderTV, faderVol);
             sp.edit().putInt("fad", faderVol).apply();
+            write = true;
         }
 
-        if (view.equals(volP) && volVol<35) {
-            volVol++;
+        if (view.equals(volP) && volVol < 140) {
+            volVol = volVol + 4;
             labelTextFormatter(volTV, volVol);
             sp.edit().putInt("vol", volVol).apply();
+            write = true;
         }
 
-
-        chSett();
+        if (write)
+            chSett();
     }
 
     @Override
@@ -316,7 +340,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void showSettings(){
+    private void showSettings() {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.settimgs);
@@ -325,17 +349,22 @@ public class MainActivity extends AppCompatActivity {
 
         CheckBox chDebug = (CheckBox) dialog.findViewById(R.id.chDebug);
         CheckBox chOpenCanbus = (CheckBox) dialog.findViewById(R.id.chCanBusAdapter);
+        chDebug.setChecked(sp.getBoolean("isDebug", false));
 
         chDebug.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                    sp.edit().putBoolean("isDebug",b).apply();
+                sp.edit().putBoolean("isDebug", b).apply();
+                if (b)
+                    recText.setVisibility(View.VISIBLE);
+                else
+                    recText.setVisibility(View.GONE);
             }
         });
         chOpenCanbus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                sp.edit().putBoolean("oCanbus",b).apply();
+                sp.edit().putBoolean("oCanbus", b).apply();
             }
         });
 
@@ -352,8 +381,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void labelTextFormatter(TextView et, int vol) {
-       // et.setText(String.valueOf(vol - 10));
-        et.setText(String.valueOf(vol));
+        if (!et.equals(volTV)) {
+            et.setText(String.valueOf(vol - 10));
+        } else {
+            et.setText(String.valueOf(vol / 4));
+        }
         et.setTypeface(typeFace);
     }
 
