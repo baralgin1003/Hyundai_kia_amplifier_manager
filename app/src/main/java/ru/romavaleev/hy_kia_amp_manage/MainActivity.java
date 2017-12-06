@@ -30,7 +30,7 @@ import java.util.Set;
 public class MainActivity extends AppCompatActivity {
 
     private TextView bassTV, midTv, trebTV, balanceTV, faderTV, volTV;
-    private SeekBar bassSB, midSB, trebSB, balanceSB, faderSB, volSB;
+    private ImageView bassM, midM, trebM, balanceM, faderM, volM, bassP, midP, trebP, balanceP, faderP, volP;
     int bassVol, midVol, trebVol, balanceVol, faderVol, volVol;
     private SharedPreferences sp;
     private Handler sendHandler;
@@ -94,14 +94,44 @@ public class MainActivity extends AppCompatActivity {
         faderTV = (TextView) findViewById(R.id.faderTV);
         volTV = (TextView) findViewById(R.id.volTV);
 
-        bassSB = (SeekBar) findViewById(R.id.bassBar);
-        midSB = (SeekBar) findViewById(R.id.middleBar);
-        trebSB = (SeekBar) findViewById(R.id.trebleBar);
-        balanceSB = (SeekBar) findViewById(R.id.balanceBar);
-        faderSB = (SeekBar) findViewById(R.id.faderBar);
-        volSB = (SeekBar) findViewById(R.id.volBar);
+        bassM = (ImageView)findViewById(R.id.bassMinus);
+        trebM = (ImageView)findViewById(R.id.trebMinus);
+        midM = (ImageView)findViewById(R.id.midMinus);
+        balanceM = (ImageView)findViewById(R.id.balanceMinus);
+        faderM = (ImageView)findViewById(R.id.fadeMinus);
+        volM = (ImageView)findViewById(R.id.volMinus);
+        bassP = (ImageView)findViewById(R.id.bassPlus);
+        trebP = (ImageView)findViewById(R.id.trebPlus);
+        midP = (ImageView)findViewById(R.id.midPlus);
+        balanceP = (ImageView)findViewById(R.id.balancePlus);
+        faderP = (ImageView)findViewById(R.id.fadePlus);
+        volP = (ImageView)findViewById(R.id.volPlus);
+
         btnSettings =(ImageView)findViewById(R.id.btnSettings);
 
+
+
+
+        ImageView.OnClickListener listenerV = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              clickProc(view);
+            }
+        };
+
+
+        bassM.setOnClickListener(listenerV);
+        midM.setOnClickListener(listenerV);
+        trebM.setOnClickListener(listenerV);
+        balanceM.setOnClickListener(listenerV);
+        faderM.setOnClickListener(listenerV);
+        volM.setOnClickListener(listenerV);
+        bassP.setOnClickListener(listenerV);
+        midP.setOnClickListener(listenerV);
+        trebP.setOnClickListener(listenerV);
+        balanceP.setOnClickListener(listenerV);
+        faderP.setOnClickListener(listenerV);
+        volP.setOnClickListener(listenerV);
 
 
         firstInit();
@@ -109,63 +139,6 @@ public class MainActivity extends AppCompatActivity {
         //recText = (TextView) findViewById(R.id.textView);
 
 
-        SeekBar.OnSeekBarChangeListener listener = new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                if (seekBar.equals(bassSB)) {
-                    labelTextFormatter(bassTV, i);
-                    bassVol = i;
-                    sp.edit().putInt("bas", i).apply();
-                }
-
-                if (seekBar.equals(midSB)) {
-                    labelTextFormatter(midTv, i);
-                    midVol = i;
-                    sp.edit().putInt("mid", i).apply();
-                }
-
-                if (seekBar.equals(trebSB)) {
-                    labelTextFormatter(trebTV, i);
-                    trebVol = i;
-                    sp.edit().putInt("tre", i).apply();
-                }
-
-                if (seekBar.equals(balanceSB)) {
-                    labelTextFormatter(balanceTV, i);
-                    sp.edit().putInt("bal", i).apply();
-                    balanceVol = i;
-                }
-
-                if (seekBar.equals(faderSB)) {
-                    labelTextFormatter(faderTV, i);
-                    sp.edit().putInt("fad", i).apply();
-                    faderVol = i;
-                }
-
-                if (seekBar.equals(volSB)) {
-                    volTV.setText(String.valueOf(i));
-                    sp.edit().putInt("vol", i).apply();
-                    volVol = i;
-                }
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                chSett();
-            }
-        };
-
-        bassSB.setOnSeekBarChangeListener(listener);
-        midSB.setOnSeekBarChangeListener(listener);
-        trebSB.setOnSeekBarChangeListener(listener);
-        balanceSB.setOnSeekBarChangeListener(listener);
-        faderSB.setOnSeekBarChangeListener(listener);
-        volSB.setOnSeekBarChangeListener(listener);
 
         sendHandler = new Handler() {
             @Override
@@ -194,6 +167,85 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
+    }
+
+    private void clickProc(View view){
+        if (view.equals(bassM) && bassVol> -10) {
+            bassVol--;
+            labelTextFormatter(bassTV, bassVol);
+            sp.edit().putInt("bas", bassVol).apply();
+        }
+
+        if (view.equals(midM) && midVol> -10) {
+            midVol--;
+            labelTextFormatter(midTv, midVol);
+            sp.edit().putInt("mid", midVol).apply();
+        }
+
+        if (view.equals(trebM) && trebVol> -10) {
+            trebVol--;
+            labelTextFormatter(trebTV, trebVol);
+            sp.edit().putInt("tre", trebVol).apply();
+        }
+
+        if (view.equals(balanceM) && balanceVol> -10) {
+            balanceVol--;
+            labelTextFormatter(balanceTV, balanceVol);
+            sp.edit().putInt("bal", balanceVol).apply();
+        }
+
+        if (view.equals(faderM) && faderVol> -10) {
+            faderVol--;
+            labelTextFormatter(faderTV, faderVol);
+            sp.edit().putInt("fad", faderVol).apply();
+        }
+
+        if (view.equals(volM) && volVol> 0) {
+            volVol--;
+            labelTextFormatter(volTV, volVol);
+            sp.edit().putInt("vol", volVol).apply();
+        }
+
+
+
+        if (view.equals(bassP) && bassVol<10) {
+            bassVol++;
+            labelTextFormatter(bassTV, bassVol);
+            sp.edit().putInt("bas", bassVol).apply();
+        }
+
+        if (view.equals(midP) && midVol<10) {
+            midVol++;
+            labelTextFormatter(midTv, midVol);
+            sp.edit().putInt("mid", midVol).apply();
+        }
+
+        if (view.equals(trebP) && trebVol<10) {
+            trebVol++;
+            labelTextFormatter(trebTV, trebVol);
+            sp.edit().putInt("tre", trebVol).apply();
+        }
+
+        if (view.equals(balanceP) && balanceVol<10) {
+            balanceVol++;
+            labelTextFormatter(balanceTV, balanceVol);
+            sp.edit().putInt("bal", balanceVol).apply();
+        }
+
+        if (view.equals(faderP) && faderVol<10) {
+            faderVol++;
+            labelTextFormatter(faderTV, faderVol);
+            sp.edit().putInt("fad", faderVol).apply();
+        }
+
+        if (view.equals(volP) && volVol<35) {
+            volVol++;
+            labelTextFormatter(volTV, volVol);
+            sp.edit().putInt("vol", volVol).apply();
+        }
+
+
+        chSett();
     }
 
     @Override
@@ -246,12 +298,6 @@ public class MainActivity extends AppCompatActivity {
         midVol = sp.getInt("mid", 10);
         trebVol = sp.getInt("tre", 10);
 
-        volSB.setProgress(volVol);
-        balanceSB.setProgress(balanceVol);
-        faderSB.setProgress(faderVol);
-        bassSB.setProgress(bassVol);
-        midSB.setProgress(midVol);
-        trebSB.setProgress(trebVol);
 
         labelTextFormatter(balanceTV, balanceVol);
         labelTextFormatter(faderTV, faderVol);
@@ -306,7 +352,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void labelTextFormatter(TextView et, int vol) {
-        et.setText(String.valueOf(vol - 10));
+       // et.setText(String.valueOf(vol - 10));
+        et.setText(String.valueOf(vol));
         et.setTypeface(typeFace);
     }
 
