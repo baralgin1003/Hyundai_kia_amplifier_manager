@@ -315,7 +315,7 @@ public class MainActivity extends AppCompatActivity {
     private void firstInit() {
         sp = PreferenceManager.getDefaultSharedPreferences(this);
 
-        volVol = sp.getInt("vol", 10);
+        volVol = sp.getInt("vol", 16);
         balanceVol = sp.getInt("bal", 10);
         faderVol = sp.getInt("fad", 10);
         bassVol = sp.getInt("bas", 10);
@@ -328,7 +328,7 @@ public class MainActivity extends AppCompatActivity {
         labelTextFormatter(bassTV, bassVol);
         labelTextFormatter(midTv, midVol);
         labelTextFormatter(trebTV, trebVol);
-        volTV.setText(String.valueOf(volVol));
+        labelTextFormatter(volTV,volVol);
         volTV.setTypeface(typeFace);
 
         btnSettings.setOnClickListener(new View.OnClickListener() {

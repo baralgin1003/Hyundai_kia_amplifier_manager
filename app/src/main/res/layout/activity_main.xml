@@ -23,13 +23,13 @@
             android:text="Hyundai-kia amplifier manager\nby baralgin1003"
             android:textAlignment="center"
             android:textColor="@color/text"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:customFont="fonts/egb.ttf" />
 
         <ImageView
             android:id="@+id/btnSettings"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
@@ -72,8 +72,8 @@
 
                 <ImageView
                     android:id="@+id/bassMinus"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_alignParentLeft="true"
                     app:srcCompat="@drawable/minus" />
 
@@ -87,7 +87,7 @@
                     android:layout_toEndOf="@+id/bassMinus"
                     android:text="Bass"
                     android:textColor="#aac4e0"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     app:customFont="fonts/egb.ttf" />
 
@@ -100,14 +100,14 @@
                     android:layout_toLeftOf="@+id/bassPlus"
                     android:text="0"
                     android:textColor="#aac4e0"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     app:customFont="fonts/egb.ttf" />
 
                 <ImageView
                     android:id="@+id/bassPlus"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_alignParentRight="true"
                     app:srcCompat="@drawable/plus" />
             </RelativeLayout>
@@ -119,8 +119,8 @@
 
                 <ImageView
                     android:id="@+id/midMinus"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_alignParentLeft="true"
                     app:srcCompat="@drawable/minus" />
 
@@ -134,7 +134,7 @@
                     android:layout_toEndOf="@+id/midMinus"
                     android:text="Middle"
                     android:textColor="#aac4e0"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     app:customFont="fonts/egb.ttf" />
 
@@ -147,14 +147,14 @@
                     android:layout_toLeftOf="@+id/midPlus"
                     android:text="0"
                     android:textColor="#aac4e0"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     app:customFont="fonts/egb.ttf" />
 
                 <ImageView
                     android:id="@+id/midPlus"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_alignParentRight="true"
                     app:srcCompat="@drawable/plus" />
             </RelativeLayout>
@@ -167,8 +167,8 @@
 
                 <ImageView
                     android:id="@+id/trebMinus"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_alignParentLeft="true"
                     app:srcCompat="@drawable/minus" />
 
@@ -182,7 +182,7 @@
                     android:layout_toEndOf="@+id/trebMinus"
                     android:text="Treble"
                     android:textColor="#aac4e0"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     app:customFont="fonts/egb.ttf" />
 
@@ -195,14 +195,14 @@
                     android:layout_toLeftOf="@+id/trebPlus"
                     android:text="0"
                     android:textColor="#aac4e0"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     app:customFont="fonts/egb.ttf" />
 
                 <ImageView
                     android:id="@+id/trebPlus"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_alignParentRight="true"
                     app:srcCompat="@drawable/plus" />
             </RelativeLayout>
@@ -232,8 +232,8 @@
 
                 <ImageView
                     android:id="@+id/balanceMinus"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_alignParentLeft="true"
                     app:srcCompat="@drawable/minus" />
 
@@ -247,7 +247,7 @@
                     android:layout_toEndOf="@+id/balanceMinus"
                     android:text="Balance"
                     android:textColor="#aac4e0"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     app:customFont="fonts/egb.ttf" />
 
@@ -260,14 +260,14 @@
                     android:layout_toLeftOf="@+id/balancePlus"
                     android:text="0"
                     android:textColor="#aac4e0"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     app:customFont="fonts/egb.ttf" />
 
                 <ImageView
                     android:id="@+id/balancePlus"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_alignParentRight="true"
                     app:srcCompat="@drawable/plus" />
             </RelativeLayout>
@@ -279,8 +279,8 @@
 
                 <ImageView
                     android:id="@+id/fadeMinus"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_alignParentLeft="true"
                     app:srcCompat="@drawable/minus" />
 
@@ -294,7 +294,7 @@
                     android:layout_toEndOf="@+id/fadeMinus"
                     android:text="Fader"
                     android:textColor="#aac4e0"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     app:customFont="fonts/egb.ttf" />
 
@@ -307,14 +307,14 @@
                     android:layout_toLeftOf="@+id/fadePlus"
                     android:text="0"
                     android:textColor="#aac4e0"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     app:customFont="fonts/egb.ttf" />
 
                 <ImageView
                     android:id="@+id/fadePlus"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_alignParentRight="true"
                     app:srcCompat="@drawable/plus" />
             </RelativeLayout>
@@ -326,8 +326,8 @@
 
                 <ImageView
                     android:id="@+id/volMinus"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_alignParentLeft="true"
                     app:srcCompat="@drawable/minus" />
 
@@ -341,7 +341,7 @@
                     android:layout_toEndOf="@+id/volMinus"
                     android:text="GAIN"
                     android:textColor="#aac4e0"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     app:customFont="fonts/egb.ttf" />
 
@@ -354,14 +354,14 @@
                     android:layout_toLeftOf="@+id/volPlus"
                     android:text="0"
                     android:textColor="#aac4e0"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     app:customFont="fonts/egb.ttf" />
 
                 <ImageView
                     android:id="@+id/volPlus"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_alignParentRight="true"
                     app:srcCompat="@drawable/plus" />
             </RelativeLayout>
